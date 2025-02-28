@@ -7,7 +7,7 @@ class Solution:
                 return
             
             # Swap characters using tuple unpacking
-            s[left], s[right] = s[right], s[left]
+            s[left], s[right] = s[right], s[left] 
             
             # Recursive call for next pair
             reverse(left + 1, right - 1)
