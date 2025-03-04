@@ -14,6 +14,16 @@ class Linklist :
         while currNode.nextNode != None:
             currNode = currNode.nextNode
         currNode.nextNode = node
+    def inserAt(self,position,value):
+        self.position = position
+        self.value = value
+        node = LinklistNode(value)
+        curr = self.head
+        while curr.value != position:
+            curr = curr.nextNode
+        node.nextNode = curr.nextNode
+        curr.nextNode = node
+
     def reverse(self):
         prev = None
         curr = self.head
@@ -23,7 +33,12 @@ class Linklist :
             prev = curr
             curr = temp
         self.head = prev
-
+    def delete(self,value):
+        curr = self.head
+        while curr.value != value:
+            prev = curr
+            curr = curr.nextNode
+        prev.nextNode = curr.nextNode
     def printList(self):
         currNode = self.head
         while currNode != None:
@@ -38,6 +53,6 @@ linklist.insert(4)
 linklist.insert(6)
 linklist.insert(10)
 linklist.insert(37)
-linklist.printList()
-linklist.reverse()
+linklist.inserAt(10,90)
+linklist.delete(37)
 linklist.printList()
