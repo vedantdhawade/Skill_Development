@@ -1,14 +1,18 @@
-from typing import List
-
-class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
-        if not nums:
-            return 0  # Edge case: Empty list
-        
-        k = 0  # Pointer for unique elements
-        for i in range(1, len(nums)):
-            if nums[i] != nums[k]:  # Found a new unique element
-                k += 1
-                nums[k] = nums[i]  # Move it to the front
-        
-        return k + 1  # Number of unique elements
+nums = [0,0,1,1,1,2,2,3,3,4]
+seen = set()
+l = 0
+r = 0
+if not nums:
+    print(0)
+else :
+    for num in nums:
+        if num in seen:
+            if r < len(nums):
+                r += 1
+            
+        else:
+            seen.add(num)
+            nums[l] = nums[r]
+            r =  r + 1 
+            l = l + 1
+    print(nums)
