@@ -1,15 +1,10 @@
-from typing import List
-
-class Solution:
-    def reverseString(self, s: List[str]) -> None:
-        def reverse(left: int, right: int) -> None:
-            if left >= right:
-                return
-            
-            # Swap characters using tuple unpacking
-            s[left], s[right] = s[right], s[left] 
-            
-            # Recursive call for next pair
-            reverse(left + 1, right - 1)
-        
-        reverse(0, len(s) - 1)
+s = ["H","a","n","n","a","h"]
+def reverseString(s):
+    l = 0
+    r = len(s) -1
+    while l <= r:
+        s[l] , s[r] = s[r] , s[l]
+        l = l + 1
+        r = r - 1
+    return s
+print(reverseString(s))
