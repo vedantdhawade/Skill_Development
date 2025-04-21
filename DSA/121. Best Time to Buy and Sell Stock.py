@@ -18,8 +18,22 @@ def run_tests():
         print(f"Test Case {i}: {status} | Output: {result} | Expected: {expected}")
 
 def maxProfit(prices):
-    print(prices)
+    start = 0
+    end = 1
+    profit = 0 
+    while end < len(prices):
+        if prices[end] <= prices[start]:
+            start = end
+        else:
+            profit = max(profit, prices[end] - prices[start])
+        end += 1
+    return profit
 
-
+        
+            
+        
     
+
+
+
 run_tests()
