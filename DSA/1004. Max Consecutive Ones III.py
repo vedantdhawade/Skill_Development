@@ -1,28 +1,21 @@
 nums = [1,1,1,0,0,0,1,1,1,1,0]
 k = 2
-max = 0
-total_max = 0
+
 start = 0
-end = 0
-while end < len(nums):
-    if nums[end] == 1:
-        end = end + 1
-        max = max + 1
-        total_max = max(total_max,max)
-    else:
-        if k != 0:
-            end = end + 1
-            max = max + 1 
-            k = k - 1
-            total_max = max(total_max,max)
-        else:
-            if nums[start] == 1:
-                start = start + 1
-                max = max - 1
-                total_max = max(total_max,max)
-            else :
-                flip = flip + 1
-                start = start + 1
-                total_max = max(total_max,max)
-print(total_max)
-            
+max_len = 0
+
+for end in range(len(nums)):
+    # If we flip a 0, decrease k
+    if nums[end] == 0:
+        k -= 1
+
+    # If k < 0, move the start pointer forward to regain a flip
+    while k < 0:
+        if nums[start] == 0:
+            k += 1  # Regain a flip
+        start += 1  # Shrink window
+
+    # Update max_len
+    max_len = max(max_len, end - start + 1)
+
+print(max_len)
